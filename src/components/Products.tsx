@@ -1,11 +1,21 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import ecoPaper from "@/assets/eco-paper.png";
 import ultimaPaper from "@/assets/ultima-paper.jpg";
 import aonePaper from "@/assets/aone-paper.jpeg";
 import jkPaper from "@/assets/jk-paper.png";
+import doubleAPaper from "@/assets/double-a-paper.png";
+import ariaPaper from "@/assets/aria-paper.png";
+import casioCalculator from "@/assets/casio-calculator.webp";
+import stickerPaper from "@/assets/sticker-paper.png";
+import a3MattePaper from "@/assets/a3-matte-paper.jpg";
+import sinarlinePaper from "@/assets/sinarline-paper.jpg";
+import safqaPaper from "@/assets/safqa-paper.jpeg";
+import ePaper from "@/assets/e-paper.jpg";
+import spectraPaper from "@/assets/spectra-paper.jpg";
+import paperlinePaper from "@/assets/paperline-paper.jpg";
+import svetoPaper from "@/assets/sveto-paper.jpg";
+import laminatingPouch from "@/assets/laminating-pouch.png";
 
 const products = [
   {
@@ -40,6 +50,90 @@ const products = [
     image: jkPaper,
     badge: "Best Seller",
   },
+  {
+    id: 5,
+    name: "Double A (Carton)",
+    description: "The carton includes 5 reams of paper.",
+    price: "KSh 2,400",
+    image: doubleAPaper,
+  },
+  {
+    id: 6,
+    name: "Aria Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,300",
+    image: ariaPaper,
+  },
+  {
+    id: 7,
+    name: "Casio FX-82EX (Carton)",
+    description: "Carton has 10 pcs.",
+    price: "KSh 8,000",
+    image: casioCalculator,
+  },
+  {
+    id: 8,
+    name: "A4 Sticker Paper (Ream)",
+    description: "Perfect for labels and stickers.",
+    price: "KSh 380",
+    image: stickerPaper,
+  },
+  {
+    id: 9,
+    name: "A3 Matte Paper (Ream)",
+    description: "High-quality matte finish.",
+    price: "KSh 650",
+    image: a3MattePaper,
+  },
+  {
+    id: 10,
+    name: "Sinarline Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,650",
+    image: sinarlinePaper,
+  },
+  {
+    id: 11,
+    name: "Safqa Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,500",
+    image: safqaPaper,
+  },
+  {
+    id: 12,
+    name: "E Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,450",
+    image: ePaper,
+  },
+  {
+    id: 13,
+    name: "Spectra Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,600",
+    image: spectraPaper,
+  },
+  {
+    id: 14,
+    name: "Paperline Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,900",
+    image: paperlinePaper,
+  },
+  {
+    id: 15,
+    name: "Sveto Paper (Carton)",
+    description: "Carton has 5 reams of paper.",
+    price: "KSh 2,500",
+    image: svetoPaper,
+  },
+  {
+    id: 16,
+    name: "A4 Laminating Pouch (Ream)",
+    description: "Durable protection for documents.",
+    price: "KSh 1,050",
+    image: laminatingPouch,
+  },
 ];
 
 const Products = () => {
@@ -52,21 +146,20 @@ const Products = () => {
             Top Products
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mt-2 mb-4">
-            Best Selling Products
+            Our Products
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our most popular printing paper and office supplies, trusted by
-            businesses across Kenya.
+            Browse our complete range of printing paper, photocopy paper, and office supplies at wholesale prices.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
             <div
               key={product.id}
               className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group opacity-0 animate-fade-in-up"
-              style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              style={{ animationDelay: `${0.05 * (index + 1)}s` }}
             >
               {/* Image */}
               <div className="relative aspect-square bg-muted overflow-hidden">
@@ -94,14 +187,6 @@ const Products = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center">
-          <Button variant="outline" className="gap-2">
-            View All Products
-            <ArrowRight className="w-4 h-4" />
-          </Button>
         </div>
       </div>
     </section>

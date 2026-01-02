@@ -1,16 +1,24 @@
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
+  const quickLinks = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <footer className="bg-primary py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Dempert Printing Enterprises" className="h-12 w-auto bg-primary-foreground rounded p-1" />
-            </div>
+            </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4 max-w-md">
               Kenya's trusted wholesale supplier of printing paper and office supplies since
               2015. We serve businesses, schools, and government institutions with quality
@@ -22,14 +30,14 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-primary-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "Products", "About", "Contact"].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors"
                   >
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

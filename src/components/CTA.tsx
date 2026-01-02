@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,8 +18,9 @@ const CTA = () => {
           <Button
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
+            asChild
           >
-            Get a Quote
+            <Link to="/contact">Get a Quote</Link>
           </Button>
           <Button
             size="lg"

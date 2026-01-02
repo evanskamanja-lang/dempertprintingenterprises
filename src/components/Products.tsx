@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import ecoPaper from "@/assets/eco-paper.png";
@@ -136,17 +139,23 @@ const products = [
   },
 ];
 
-const Products = () => {
+interface ProductsProps {
+  showAll?: boolean;
+}
+
+const Products = ({ showAll = false }: ProductsProps) => {
+  const displayProducts = showAll ? products : products.slice(0, 4);
+
   return (
     <section id="products" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wider">
-            Top Products
+            {showAll ? "All Products" : "Top Products"}
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mt-2 mb-4">
-            Our Products
+            {showAll ? "Our Products" : "Best Selling Products"}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Browse our complete range of printing paper, photocopy paper, and office supplies at wholesale prices.
@@ -154,8 +163,8 @@ const Products = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {displayProducts.map((product, index) => (
             <div
               key={product.id}
               className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group opacity-0 animate-fade-in-up"
@@ -188,6 +197,18 @@ const Products = () => {
             </div>
           ))}
         </div>
+
+        {/* View All Button - only show on home page */}
+        {!showAll && (
+          <div className="text-center">
+            <Button variant="outline" className="gap-2" asChild>
+              <Link to="/products">
+                View All Products
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

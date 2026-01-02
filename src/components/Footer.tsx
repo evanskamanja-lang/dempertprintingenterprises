@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,12 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-sm">D</span>
-              </div>
-              <span className="font-semibold text-primary-foreground">
-                DEMPERT PRINTING ENTERPRISES
-              </span>
+              <img src={logo} alt="Dempert Printing Enterprises" className="h-12 w-auto bg-primary-foreground rounded p-1" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4 max-w-md">
               Kenya's trusted wholesale supplier of printing paper and office supplies since

@@ -27,7 +27,7 @@ const Index = () => {
         <Navbar />
         <main>
           <Hero />
-          <Products />
+          <Products showAll={false} />
           <WhyChooseUs />
           <Testimonials />
           <CTA />

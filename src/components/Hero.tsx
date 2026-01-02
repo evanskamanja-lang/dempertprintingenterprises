@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Truck, Shield, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-paper-warehouse.jpg";
@@ -62,17 +63,23 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
+              asChild
             >
-              Browse Products
-              <ArrowRight className="w-4 h-4" />
+              <Link to="/products">
+                Browse Products
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </Button>
             <Button 
               size="lg" 
               variant="heroOutline"
               className="gap-2"
+              asChild
             >
-              <Phone className="w-4 h-4" />
-              Get a Quote
+              <Link to="/contact">
+                <Phone className="w-4 h-4" />
+                Get a Quote
+              </Link>
             </Button>
           </div>
 
@@ -81,7 +88,7 @@ const Hero = () => {
             className="flex flex-wrap gap-3 opacity-0 animate-fade-in"
             style={{ animationDelay: "0.9s" }}
           >
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <div
                 key={feature.label}
                 className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg px-4 py-3"

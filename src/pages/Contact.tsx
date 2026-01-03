@@ -1,10 +1,44 @@
 import { Helmet } from "react-helmet-async";
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We'll get back to you soon.",
+    });
+
+    setFormData({ name: "", email: "", phone: "", message: "" });
+    setIsSubmitting(false);
+  };
+
   return (
     <>
       <Helmet>
@@ -38,7 +72,7 @@ const Contact = () => {
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                     <Phone className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">Phone</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Phone</h3>
                   <a href="tel:+254722148262" className="text-muted-foreground hover:text-accent transition-colors">
                     +254 722 148 262
                   </a>
@@ -48,7 +82,7 @@ const Contact = () => {
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                     <Mail className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">Email</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Email</h3>
                   <a href="mailto:info@dempert.co.ke" className="text-muted-foreground hover:text-accent transition-colors">
                     info@dempert.co.ke
                   </a>
@@ -58,7 +92,7 @@ const Contact = () => {
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">Locations</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Locations</h3>
                   <p className="text-muted-foreground">Nyeri & Nairobi, Kenya</p>
                 </div>
 
@@ -66,15 +100,87 @@ const Contact = () => {
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                     <Clock className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">Hours</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Hours</h3>
                   <p className="text-muted-foreground">Mon - Sat: 8am - 6pm</p>
+                </div>
+              </div>
+
+              {/* Contact Form */}
+              <div className="max-w-2xl mx-auto mb-16">
+                <div className="bg-secondary rounded-2xl p-8">
+                  <h2 className="text-2xl font-display font-bold text-foreground mb-6 text-center">
+                    Send Us a Message
+                  </h2>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          maxLength={100}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          maxLength={255}
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="+254 700 000 000"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        maxLength={20}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us about your requirements..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        maxLength={1000}
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
+                      disabled={isSubmitting}
+                    >
+                      <Send className="w-4 h-4" />
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
                 </div>
               </div>
 
               {/* CTA Buttons */}
               <div className="text-center">
-                <h2 className="text-2xl font-display font-bold text-primary mb-6">
-                  Ready to Order?
+                <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+                  Prefer to Talk Directly?
                 </h2>
                 <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
                   Contact us today for a custom quote tailored to your business needs. We offer competitive wholesale prices and fast delivery.

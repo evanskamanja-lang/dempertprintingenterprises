@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, ShoppingCart, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
@@ -36,7 +35,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side */}
+          {/* Right Side - Phone only */}
           <div className="hidden md:flex items-center gap-4">
             <a
               href="tel:+254722148262"
@@ -45,10 +44,6 @@ const Navbar = () => {
               <Phone className="w-4 h-4" />
               <span>+254 722 148 262</span>
             </a>
-            <Button variant="default" size="sm" className="gap-2">
-              <ShoppingCart className="w-4 h-4" />
-              Cart
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,10 +81,6 @@ const Navbar = () => {
                 <Phone className="w-4 h-4" />
                 <span>+254 722 148 262</span>
               </a>
-              <Button variant="default" size="sm" className="gap-2 w-fit">
-                <ShoppingCart className="w-4 h-4" />
-                Cart
-              </Button>
             </div>
           </div>
         )}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,7 +9,6 @@ import aonePaper from "@/assets/aone-paper.jpeg";
 import jkPaper from "@/assets/jk-paper.png";
 import doubleAPaper from "@/assets/double-a-paper.png";
 import ariaPaper from "@/assets/aria-paper.png";
-import casioCalculator from "@/assets/casio-calculator.webp";
 import stickerPaper from "@/assets/sticker-paper.png";
 import a3MattePaper from "@/assets/a3-matte-paper.jpg";
 import sinarlinePaper from "@/assets/sinarline-paper.jpg";
@@ -69,69 +68,62 @@ const products = [
   },
   {
     id: 7,
-    name: "Casio FX-82EX (Carton)",
-    description: "Carton has 10 pcs.",
-    price: "KSh 8,000",
-    image: casioCalculator,
-  },
-  {
-    id: 8,
     name: "A4 Sticker Paper (Ream)",
     description: "Perfect for labels and stickers.",
     price: "KSh 380",
     image: stickerPaper,
   },
   {
-    id: 9,
+    id: 8,
     name: "A3 Matte Paper (Ream)",
     description: "High-quality matte finish.",
     price: "KSh 650",
     image: a3MattePaper,
   },
   {
-    id: 10,
+    id: 9,
     name: "Sinarline Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,650",
     image: sinarlinePaper,
   },
   {
-    id: 11,
+    id: 10,
     name: "Safqa Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,500",
     image: safqaPaper,
   },
   {
-    id: 12,
+    id: 11,
     name: "E Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,450",
     image: ePaper,
   },
   {
-    id: 13,
+    id: 12,
     name: "Spectra Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,600",
     image: spectraPaper,
   },
   {
-    id: 14,
+    id: 13,
     name: "Paperline Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,900",
     image: paperlinePaper,
   },
   {
-    id: 15,
+    id: 14,
     name: "Sveto Paper (Carton)",
     description: "Carton has 5 reams of paper.",
     price: "KSh 2,500",
     image: svetoPaper,
   },
   {
-    id: 16,
+    id: 15,
     name: "A4 Laminating Pouch (Ream)",
     description: "Durable protection for documents.",
     price: "KSh 1,050",
@@ -207,6 +199,31 @@ const Products = ({ showAll = false }: ProductsProps) => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
+          </div>
+        )}
+
+        {/* WhatsApp and Call buttons - only show on products page */}
+        {showAll && (
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-6">Have questions about our products? Contact us directly!</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="whatsapp" size="lg" className="gap-2" asChild>
+                <a
+                  href="https://wa.me/254722148262?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Us
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" className="gap-2" asChild>
+                <a href="tel:+254722148262">
+                  <Phone className="w-5 h-5" />
+                  Call Us
+                </a>
+              </Button>
+            </div>
           </div>
         )}
       </div>
